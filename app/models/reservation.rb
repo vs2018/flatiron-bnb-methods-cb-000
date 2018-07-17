@@ -7,6 +7,7 @@ class Reservation < ActiveRecord::Base
       
       validates :checkin, uniqueness: true
       
+      validates :listing, presence: true
       validate :checking_before_checkout
       
       validate :checkin_checkout_date_not_same
