@@ -16,17 +16,15 @@ class Reservation < ActiveRecord::Base
       
       
       def listing_available_at_checkin
-        
-        self.listing != nil
        
-        # self.listing.reservations.each do |reservation|
-        #   if self.checkin
-        #   if reservation.checkin <= self.checkin && reservation.checkout >= self.checkout 
-        #     errors.add(:base, "cant reserve")
+        self.listing.reservations.each do |reservation|
+          if self.checkin
+          if reservation.checkin <= self.checkin && reservation.checkout >= self.checkout 
+             errors.add(:base, "cant reserve")
 
-        #     end
-        #   end
-        # end
+            end
+          end
+        end
       end
       
       
