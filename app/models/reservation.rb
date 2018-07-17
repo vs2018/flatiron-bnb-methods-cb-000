@@ -14,6 +14,8 @@ class Reservation < ActiveRecord::Base
       
       validate :listing_available_at_checkin
       
+      validate :guest_and_host_not_the_same
+      
       
        def guest_and_host_not_the_same
     if self.guest_id == self.listing.host_id
