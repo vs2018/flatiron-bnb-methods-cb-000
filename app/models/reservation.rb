@@ -11,21 +11,19 @@ class Reservation < ActiveRecord::Base
       
       validate :checkin_checkout_date_not_same
       
-      validate :listing_available
+      validate :listing_available_at_checkin
       
       
       
-      def listing_available
+      def listing_available_at_checkin
        
         self.listing.reservations.each do |reservation|
           if self.checkin
-            if self.checkout 
           if reservation.checkin <= self.checkin && reservation.checkout >= self.checkout 
              errors.add(:base, "cant reserve")
 
+            end
           end
-        end
-      end
         end
       end
       
