@@ -15,7 +15,11 @@ class Reservation < ActiveRecord::Base
       validate :listing_available_at_checkin
       
       
-      
+       def guest_and_host_not_the_same
+    if self.guest_id == self.listing.host_id
+      errors.add(:guest_id, "You can't book your own apartment")
+    end
+  end
       
       
       def listing_available_at_checkin
