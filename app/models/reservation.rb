@@ -16,6 +16,8 @@ class Reservation < ActiveRecord::Base
       
       
       
+      
+      
       def listing_available_at_checkin
        
         self.listing.reservations.each do |reservation|
